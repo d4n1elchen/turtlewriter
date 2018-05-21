@@ -26,7 +26,7 @@ class ToXyAction(object):
     _tele = TeleportAbsolute()
 
     def __init__(self, name):
-        self._r = rospy.Rate(500)
+        self._r = rospy.Rate(1000)
 
         self._action_name = name
         self._as = actionlib.SimpleActionServer(self._action_name, turtlewriter.msg.ToXyAction,
@@ -69,11 +69,11 @@ class ToXyAction(object):
         success = self._go_dist(dist, 0.2)
 
         if success:
-            self._result = True
+            self._result.reach_xy = True
             rospy.loginfo("Action finished!")
             self._as.set_succeeded(self._result)
         else:
-            self._result = False
+            self._result.reach_xy = False
             rospy.loginfo("Action not finished!")
             self._as.set_aborted(self._result)
 
