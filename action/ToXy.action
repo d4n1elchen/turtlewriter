@@ -1,0 +1,9 @@
+# Define the goal
+float64 x
+float64 y
+---
+# Define the result
+uint32 reach_xy
+---
+# Define a feedback message
+turtlesim/Pose pose
